@@ -28,6 +28,11 @@
     align-items: center;
 }
 
+@mixin centrarGrid{
+    display: grid;
+    place-items: center;
+}
+
 @mixin container($ancho){
     width: $ancho;
     max-width: 120rem;
