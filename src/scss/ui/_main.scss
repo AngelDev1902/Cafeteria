@@ -202,3 +202,108 @@ section{
         }
     }
 }
+
+.galeria-container{
+    padding: 3rem 0;
+    display: grid;
+    place-items: center;
+    gap: 1rem;
+    @include mx.container(80%);
+
+    @include mx.telefono{
+        @include mx.container(50%);
+    }
+
+    @include mx.tablet{
+        grid-template-areas: 
+            "i1 i2"
+            "i1 i3"
+            "i4 i5"
+            "i4 i6"
+            "i7 i7";
+
+            .galeria__img:nth-child(1){
+                grid-area: i1;
+            }
+        
+            .galeria__img:nth-child(2){
+                grid-area: i2;
+            }
+        
+            .galeria__img:nth-child(3){
+                grid-area: i4;
+            }
+        
+            .galeria__img:nth-child(4){
+                grid-area: i3;
+            }
+        
+            .galeria__img:nth-child(5){
+                grid-area: i5;
+            }
+        
+            .galeria__img:nth-child(6){
+                grid-area: i6;
+            }
+        
+            .galeria__img:nth-child(7){
+                grid-area: i7;
+            }
+    }
+}
+
+.visualizar-img{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: v.$fondo3;
+    z-index: 6;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+    grid-template-areas: 
+        'imagen imagen imagen'
+        'imagen imagen imagen'
+        'flecha1 tache flecha2'
+    ;
+
+    picture{
+        grid-area: imagen;
+        height: 70vh;
+        @include mx.centrarFlex;
+
+        img{
+            max-height: 65rem;
+            width: 80%;
+        }
+    }
+
+    .flecha1{
+        grid-area: flecha1;
+    }
+
+    .flecha2{
+        grid-area: flecha2;
+    }
+
+    .tache{
+        grid-area: tache;
+    }
+
+    .flecha1, .flecha2, .tache{
+        font-size: 3rem;
+        background-color: v.$cafe1;
+        color: v.$cafe4;
+        border-radius: 50%;
+        height: 4rem;
+        width: 4rem;
+        @include mx.centrarFlex;
+        align-self: start;
+    }
+}
+
+.visualizar-img-active{
+    visibility: visible;
+}

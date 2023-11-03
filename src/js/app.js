@@ -6,7 +6,11 @@ const desayuno = document.querySelector('.menu-index__desayunos');
 const bebida = document.querySelector('.menu-index__bebidas');
 const siguientes = document.querySelectorAll('.after');
 const anteriores = document.querySelectorAll('.before');
-
+const galeria = document.querySelector('.galeria-container')
+const visualizarImg = document.querySelector(".visualizar-img");
+const tache = document.querySelector(".tache");
+const imgAnt = document.querySelector('.flecha1');
+const imgSig = document.querySelector('.flecha2');
 
 // Datos de los productos
 let postreDatos = {
@@ -113,3 +117,85 @@ anteriores.forEach(before => {
         menu.style.left = pos + "rem";
     })
 });
+
+// Añadir imagenes de instalaciones
+for (let i = 1; i <= 7; i++) {
+    
+    let imagen = document.createElement('div');
+    imagen.classList.add("galeria__img");
+
+    imagen.innerHTML = `
+        <picture>
+            <source srcset="build/img/cafe${i}.avif" type="image/avif">
+            <source srcset="build/img/cafe${i}.webp" type="image/webp">
+            <img loading="lazy" src="build/img/cafe${i}.png" alt="">
+        </picture>
+    `;
+
+    galeria.appendChild(imagen);
+}
+
+// visualizar imagenes
+const imagenes = document.querySelectorAll(".galeria__img");
+
+imagenes.forEach(imagen => {
+    imagen.addEventListener('click', (e) => {
+        let imgNombre = e.target['currentSrc'];
+        let num = obtenerNum(imgNombre);
+
+        agregarImagen(num);
+
+        visualizarImg.classList.add("visualizar-img-active");
+        body.classList.add("body-desactive");
+    });
+});
+
+tache.addEventListener('click', () => {
+    document.querySelector('.imagenAmplificada').remove();
+    visualizarImg.classList.remove("visualizar-img-active");
+    body.classList.remove("body-desactive");
+});
+
+imgAnt.addEventListener('click', () => {
+    let num = document.querySelector('.imagenAmplificada')
+    num = num.classList[1];
+
+    if (num > 1) {
+        document.querySelector('.imagenAmplificada').remove();
+        agregarImagen(parseInt(num) - 1);
+    }
+});
+
+imgSig.addEventListener('click', () => {
+    let num = document.querySelector('.imagenAmplificada')
+    num = num.classList[1];
+    
+    if (num < 7) {
+        document.querySelector('.imagenAmplificada').remove();
+        agregarImagen(parseInt(num) + 1);
+    }
+});
+
+function obtenerNum(imgNombre) { 
+    imgNombre = imgNombre.split('/');
+    imgNombre = imgNombre[imgNombre.length - 1];
+    imgNombre = imgNombre.split('.');
+    imgNombre = imgNombre[0];
+    imgNombre = imgNombre.charAt(imgNombre.length - 1);
+
+    return imgNombre;
+}
+
+function agregarImagen(num) {
+    let imagen = document.createElement('picture');
+    imagen.classList.add("imagenAmplificada");
+    imagen.classList.add(num);
+
+    imagen.innerHTML = `
+        <source srcset="build/img/cafe${num}.avif" type="image/avif">
+        <source srcset="build/img/cafe${num}.webp" type="image/webp">
+        <img loading="lazy" src="build/img/cafe${num}.png" alt="">
+    `;
+
+    visualizarImg.appendChild(imagen);
+}
