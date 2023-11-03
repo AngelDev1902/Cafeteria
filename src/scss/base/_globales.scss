@@ -20,6 +20,7 @@ body{
     overflow-x: hidden;
     position: relative;
     top: 7rem;
+    width: 100vw;
 
     @include mx.desktop{
         top: 13rem;  

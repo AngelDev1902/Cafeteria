@@ -2,7 +2,7 @@
 @use '../base/variables' as v;
 
 .header{
-    width: 100%;
+    width: 100vw;
     height: 7rem;
     background-color: v.$gris1;
     position: fixed;
