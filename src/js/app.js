@@ -4,6 +4,9 @@ const body = document.body;
 const postre = document.querySelector('.menu-index__postres');
 const desayuno = document.querySelector('.menu-index__desayunos');
 const bebida = document.querySelector('.menu-index__bebidas');
+const siguientes = document.querySelectorAll('.after');
+const anteriores = document.querySelectorAll('.before');
+
 
 // Datos de los productos
 let postreDatos = {
@@ -74,3 +77,39 @@ function agregarMenu() {
         }
     }
 }
+
+siguientes.forEach(after => {
+    after.addEventListener('click', () => {
+        let menu = after.parentNode.querySelector('.menu-producto');
+        
+        let pos = menu.style.left;
+        pos = parseFloat(pos) || 0;
+
+        let anchoContenedor = after.parentNode.offsetWidth;
+        let anchoMenu = menu.offsetWidth;
+        let ancho = (anchoMenu - anchoContenedor) / 10;
+        
+        if (pos > -ancho) {
+            pos -= 30;
+            console.log(menu.style.left);
+        }
+
+        menu.style.left = pos + "rem";
+    })
+});
+
+anteriores.forEach(before => {
+    before.addEventListener('click', () => {
+        let menu = before.parentNode.querySelector('.menu-producto');
+        
+        let pos = menu.style.left;
+        pos = parseFloat(pos) || 0;
+
+        
+        if (pos < 0) {
+            pos += 30;
+        }
+
+        menu.style.left = pos + "rem";
+    })
+});
