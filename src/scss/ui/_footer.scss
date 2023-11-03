@@ -1,0 +1,32 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as mx;
+
+.footer{
+    background-color: v.$cafe2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: v.$cafe4;
+    font-weight: 700;
+}
+
+.footer-logo{
+    img{
+        height: 5rem;
+    }
+}
+
+.footer-redes{
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+
+    a{
+        font-size: 2.5rem;
+        i{
+            color: v.$cafe4;
+        }
+    }
+}

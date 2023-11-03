@@ -11,6 +11,8 @@ const visualizarImg = document.querySelector(".visualizar-img");
 const tache = document.querySelector(".tache");
 const imgAnt = document.querySelector('.flecha1');
 const imgSig = document.querySelector('.flecha2');
+const btnForm = document.querySelector('.formulario-btn');
+const mensaje = document.querySelector('.mensaje');
 
 // Datos de los productos
 let postreDatos = {
@@ -41,6 +43,15 @@ let desayunoDatos = {
 nav.addEventListener('click', () => {
     headerMenu.classList.toggle('header__menu-active');
     body.classList.toggle('body-desactive');
+
+    /* let links = document.querySelectorAll(".nav__link");
+
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            headerMenu.classList.remove('header__menu-active');
+            body.classList.remove('body-desactive');
+        });
+    }); */
 
 });
 
@@ -199,3 +210,14 @@ function agregarImagen(num) {
 
     visualizarImg.appendChild(imagen);
 }
+
+// mensaje de formulario
+btnForm.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    mensaje.classList.add("mensaje-active");
+
+    setTimeout(function() {
+        mensaje.classList.remove("mensaje-active");
+    }, 4000);
+})

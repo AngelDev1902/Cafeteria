@@ -1,0 +1,23 @@
+@use '../base/mixins' as mx;
+@use '../base/variables' as v;
+
+.mensaje{
+    position: fixed;
+    width: 90%;
+    max-width: 40rem;
+    left: calc((100% - 40rem) / 2);
+    top: -5.6rem;
+    background-color: v.$gris1;
+    border-radius: 1.5rem;
+    text-align: center;
+    color: v.$cafe4;
+    transition: top 1s ease;
+}
+
+.mensaje-active{
+    top: 8rem;
+
+    @include mx.desktop{
+        top: 15rem;
+    }
+}
