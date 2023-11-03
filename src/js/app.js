@@ -119,7 +119,7 @@ anteriores.forEach(before => {
 });
 
 // Añadir imagenes de instalaciones
-for (let i = 1; i <= 7; i++) {
+for (let i = 1; i <= 6; i++) {
     
     let imagen = document.createElement('div');
     imagen.classList.add("galeria__img");

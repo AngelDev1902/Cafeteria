@@ -210,17 +210,12 @@ section{
     gap: 1rem;
     @include mx.container(80%);
 
-    @include mx.telefono{
-        @include mx.container(50%);
-    }
-
     @include mx.tablet{
         grid-template-areas: 
             "i1 i2"
             "i1 i3"
             "i4 i5"
-            "i4 i6"
-            "i7 i7";
+            "i4 i6";
 
             .galeria__img:nth-child(1){
                 grid-area: i1;
@@ -245,10 +240,12 @@ section{
             .galeria__img:nth-child(6){
                 grid-area: i6;
             }
-        
-            .galeria__img:nth-child(7){
-                grid-area: i7;
-            }
+    }
+
+    @include mx.desktop{
+        grid-template-areas: 
+            "i1 i2 i4 i5"
+            "i1 i3 i4 i6"
     }
 }
 
@@ -306,4 +303,65 @@ section{
 
 .visualizar-img-active{
     visibility: visible;
+}
+
+.testimonios{
+    background-color: v.$gris1;
+
+    h2{
+        color: v.$cafe4
+    }
+}
+
+.testimonios-container{
+    @include mx.container(90%);
+    display: grid;
+    place-items: center;
+    gap: 2rem;
+    grid-template-columns:  repeat(auto-fill, minmax(30rem, 1fr));
+
+    @include mx.tablet{
+        width: 80%;
+    }
+
+    @include mx.desktop{
+        width: 60%;
+    }
+}
+
+.testimonios-card{
+    background-color: v.$cafe2;
+    width: 100%;
+    max-width: 35rem;
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+
+    .comillas{
+        background-color: v.$cafe2;
+        border-radius: 50%;
+        position: absolute;
+        top: -8rem;
+        font-size: 5rem;
+        height: 6rem;
+        width: 6rem;
+        display: grid;
+        place-items: center;
+    }
+
+    p{
+        font-size: 2rem;
+        color: v.$cafe4;
+        font-weight: 700;
+    }
+
+    .autor{
+        font-weight: 400;
+        align-self: flex-start;
+    }
 }
