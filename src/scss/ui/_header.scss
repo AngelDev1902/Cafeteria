@@ -1,0 +1,131 @@
+@use '../base/mixins' as mx;
+@use '../base/variables' as v;
+
+.header{
+    width: 100%;
+    height: 7rem;
+    background-color: v.$gris1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    @include mx.desktop{
+        height: 13rem;
+    }
+}
+
+.header-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include mx.desktop{
+        gap: 1rem;
+    }
+}
+
+.header__logo{
+    height: 7rem;
+    @include mx.centrarFlex;
+
+    img{
+        height: 6rem;
+        width: auto;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 0;
+        left: 1rem;
+        width: 5rem;
+        height: 100%;
+        @include mx.centrarFlex;
+        font-size: 3.5rem;
+        color: v.$cafe4;
+
+        @include mx.desktop{
+            display: none;
+        }
+
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+.header__menu{
+    background-color: v.$cafe1;
+    position: absolute;
+    top: 7rem;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 7rem);
+    transition: left 1s ease;
+
+    @include mx.telefono{
+        width: 30rem;
+    }
+
+    @include mx.desktop{
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: 5rem;
+        background-color: v.$gris1;
+    }
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        margin-top: 3rem;
+        height: 30rem;
+
+        @include mx.desktop{
+            flex-direction: row;
+            height: 100%;
+            @include mx.container(60%);
+        }
+
+        @include mx.desktopXL{
+            width: 40%;
+        }
+
+        li{
+            flex: 1;
+            border-bottom: 1px solid v.$cafe2;
+
+            a{
+                font-size: 2.2rem;
+                color: v.$cafe4;
+                padding: 0 3rem;
+                width: 100%;
+                height: 100%;
+                text-align: start;
+                display: flex;
+                align-items: center;
+
+                @include mx.desktop{
+                    font-size: 1.8rem;
+                    padding: 0;
+                    justify-content: center;
+                }
+
+                &:hover{
+                    color: v.$cafe3;
+                    background-color: v.$cafe2;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+.header__menu-active{
+    left: 0;
+}

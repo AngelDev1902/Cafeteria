@@ -1,0 +1,35 @@
+@mixin telefono{
+    @media (min-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet{
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin desktopXL{
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin centrarFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin container($ancho){
+    width: $ancho;
+    max-width: 120rem;
+    margin: 0 auto;
+}
